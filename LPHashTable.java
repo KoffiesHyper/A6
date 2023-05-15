@@ -29,7 +29,10 @@ public class LPHashTable extends HashTable {
       int hashVal = hashFunction(key);
       int index = -1;
 
-      while(getProbeCount() <= tableSize()){
+      int cellsChecked = 0;
+
+      while(cellsChecked <= tableSize()){
+        cellsChecked++;
         incProbeCount();
 
         if(table[hashVal] == null){
@@ -39,6 +42,7 @@ public class LPHashTable extends HashTable {
 
         hashVal = (hashVal + 1) % tableSize();
       }
+
 
       return index;
       
